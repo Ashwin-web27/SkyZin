@@ -82,7 +82,6 @@ dist
 
 # Gatsby files
 .cache/
-public
 
 # Storybook build outputs
 .out
@@ -152,8 +151,7 @@ $RECYCLE.BIN/
 # Uploads and file storage
 uploads/
 storage/
-public/uploads/
-public/storage/
+
 
 # Build outputs
 build/
