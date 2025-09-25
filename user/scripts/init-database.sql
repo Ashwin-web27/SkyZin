@@ -1,0 +1,164 @@
+-- This file is for reference only
+-- MongoDB doesn't use SQL, but this shows the equivalent structure
+
+-- Users Collection Structure
+-- {
+--   _id: ObjectId,
+--   name: String,
+--   email: String (unique),
+--   password: String (hashed),
+--   role: String (enum: student, teacher, admin),
+--   avatar: String,
+--   phone: String,
+--   dateOfBirth: Date,
+--   enrolledCourses: [
+--     {
+--       course: ObjectId (ref: Course),
+--       enrolledAt: Date,
+--       progress: Number (0-100)
+--     }
+--   ],
+--   teachingCourses: [ObjectId] (ref: Course),
+--   schedule: [ObjectId] (ref: Schedule),
+--   preferences: {
+--     notifications: {
+--       email: Boolean,
+--       push: Boolean,
+--       sms: Boolean
+--     },
+--     timezone: String
+--   },
+--   isActive: Boolean,
+--   lastLogin: Date,
+--   createdAt: Date,
+--   updatedAt: Date
+-- }
+
+-- Courses Collection Structure
+-- {
+--   _id: ObjectId,
+--   title: String,
+--   description: String,
+--   instructor: ObjectId (ref: User),
+--   category: String (enum),
+--   level: String (enum: beginner, intermediate, advanced),
+--   duration: {
+--     weeks: Number,
+--     hoursPerWeek: Number
+--   },
+--   schedule: {
+--     days: [String],
+--     startTime: String,
+--     endTime: String,
+--     timezone: String
+--   },
+--   capacity: {
+--     min: Number,
+--     max: Number
+--   },
+--   enrolledStudents: [
+--     {
+--       student: ObjectId (ref: User),
+--       enrolledAt: Date,
+--       status: String (enum: active, completed, dropped)
+--     }
+--   ],
+--   price: {
+--     amount: Number,
+--     currency: String
+--   },
+--   startDate: Date,
+--   endDate: Date,
+--   status: String (enum: draft, published, ongoing, completed, cancelled),
+--   materials: [
+--     {
+--       title: String,
+--       type: String (enum: video, document, link, assignment),
+--       url: String,
+--       uploadedAt: Date
+--     }
+--   ],
+--   tags: [String],
+--   thumbnail: String,
+--   isActive: Boolean,
+--   createdAt: Date,
+--   updatedAt: Date
+-- }
+
+-- Schedules Collection Structure
+-- {
+--   _id: ObjectId,
+--   title: String,
+--   description: String,
+--   type: String (enum: class, meeting, consultation, exam, assignment, event),
+--   course: ObjectId (ref: Course),
+--   instructor: ObjectId (ref: User),
+--   participants: [
+--     {
+--       user: ObjectId (ref: User),
+--       status: String (enum: invited, accepted, declined, attended, absent),
+--       joinedAt: Date,
+--       leftAt: Date
+--     }
+--   ],
+--   dateTime: {
+--     start: Date,
+--     end: Date,
+--     timezone: String
+--   },
+--   recurrence: {
+--     type: String (enum: none, daily, weekly, monthly),
+--     interval: Number,
+--     endDate: Date,
+--     daysOfWeek: [String]
+--   },
+--   location: {
+--     type: String (enum: online, physical, hybrid),
+--     details: {
+--       room: String,
+--       address: String,
+--       meetingLink: String,
+--       meetingId: String,
+--       password: String
+--     }
+--   },
+--   status: String (enum: scheduled, ongoing, completed, cancelled, postponed),
+--   notifications: {
+--     sent: Boolean,
+--     sentAt: Date,
+--     reminders: [
+--       {
+--         type: String (enum: email, push, sms),
+--         minutesBefore: Number,
+--         sent: Boolean,
+--         sentAt: Date
+--       }
+--     ]
+--   },
+--   attendance: [
+--     {
+--       user: ObjectId (ref: User),
+--       status: String (enum: present, absent, late),
+--       joinTime: Date,
+--       leaveTime: Date,
+--       duration: Number
+--     }
+--   ],
+--   materials: [
+--     {
+--       title: String,
+--       type: String (enum: slides, document, video, link),
+--       url: String,
+--       uploadedAt: Date
+--     }
+--   ],
+--   recording: {
+--     available: Boolean,
+--     url: String,
+--     duration: Number,
+--     uploadedAt: Date
+--   },
+--   createdBy: ObjectId (ref: User),
+--   createdAt: Date,
+--   updatedAt: Date
+-- }
