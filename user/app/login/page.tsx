@@ -95,8 +95,15 @@ export default function LoginPage() {
             </Button>
           </form>
           <p className="mt-6 text-center text-xs text-white/70">
-            By logging in, you agree to our Privacy Policy and Terms of Use.
-          </p>
+  By logging in, you agree to our{" "}
+  <a href="/terms" className="text-indigo-300 underline underline-offset-4">
+    Terms & Conditions
+  </a>{" "}
+  and{" "}
+  <a href="/privacy" className="text-indigo-300 underline underline-offset-4">
+    Privacy Policy
+  </a>.
+</p>
           <p className="mt-4 text-center text-sm text-white/80">
             New here?{" "}
             <a href="/signup" className="text-indigo-300 underline underline-offset-4">
