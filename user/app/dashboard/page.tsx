@@ -211,7 +211,7 @@ export default function DashboardPage() {
     <div className="space-y-6">
       <header className="flex flex-col gap-2">
         <h1 className="text-2xl font-semibold text-white">
-          Welcome back, {dashboardData.user.name}!
+          Welcome back!
         </h1>
         <p className="text-white/60">Here's a quick snapshot of your learning progress.</p>
       </header>
