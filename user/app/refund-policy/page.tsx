@@ -20,12 +20,12 @@ export default function RefundPolicyPage() {
 
             <h2 className="text-lg font-semibold text-white">2. Refund Process</h2>
             <p>
-              Refund requests must be emailed to <strong>[your email]</strong>. Approved refunds will be processed within
+              Refund requests must be emailed to <strong>[skyzin2025@gmail.com]</strong>. Approved refunds will be processed within
               7–10 business days.
             </p>
 
             <h2 className="text-lg font-semibold text-white">3. Contact</h2>
-            <p>For issues, contact us at [your email / phone].</p>
+            <p>For issues, contact us at [skyzin2025@gmail.com/ 8888116841 & 8767735164].</p>
 
             <p className="mt-6 text-center">
               <a href="/login" className="text-indigo-300 underline underline-offset-4">
