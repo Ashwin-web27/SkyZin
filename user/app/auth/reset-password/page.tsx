@@ -166,7 +166,7 @@ function ResetPasswordContent() {
                 Request New Reset Link
               </Button>
             </Link>
-            <Link href="/auth/login">
+            <Link href="/login">
               <Button variant="outline" className="w-full bg-transparent border-gray-600 text-gray-300 hover:bg-gray-700">
                 Back to Login
               </Button>
@@ -194,7 +194,7 @@ function ResetPasswordContent() {
                 You can now log in with your new password.
               </p>
             </div>
-            <Link href="/auth/login">
+            <Link href="/login">
               <Button className="w-full bg-blue-600 hover:bg-blue-700 text-white">
                 Go to Login
               </Button>
@@ -310,7 +310,7 @@ function ResetPasswordContent() {
 
             <div className="text-center">
               <Link 
-                href="/auth/login" 
+                href="/login" 
                 className="text-blue-400 hover:text-blue-300 text-sm"
               >
                 Back to Login

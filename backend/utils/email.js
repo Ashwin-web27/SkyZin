@@ -6,7 +6,7 @@ const createTransporter = async () => {
     // Production email configuration (e.g., SendGrid, AWS SES, etc.)
     return nodemailer.createTransport({
       host: process.env.SMTP_HOST,
-      port: process.env.SMTP_PORT || 587,
+      port: process.env.SMTP_PORT || 465,
       secure: process.env.SMTP_SECURE === 'true',
       auth: {
         user: process.env.SMTP_USER,
@@ -38,7 +38,7 @@ const createTransporter = async () => {
         
         return nodemailer.createTransport({
           host: 'smtp.ethereal.email',
-          port: 587,
+          port: 465,
           secure: false,
           auth: {
             user: testAccount.user,
@@ -59,9 +59,7 @@ const sendPasswordResetEmail = async ({ to, name, resetUrl }) => {
     const transporter = await createTransporter();
 
     // In development, send all emails to the configured target email
-    const targetEmail = process.env.NODE_ENV === 'development' && process.env.TEST_EMAIL_TARGET 
-      ? process.env.TEST_EMAIL_TARGET 
-      : to;
+    const targetEmail = to;
 
     console.log(`📧 Sending password reset email:`);
     console.log(`   Original recipient: ${to}`);
@@ -69,9 +67,9 @@ const sendPasswordResetEmail = async ({ to, name, resetUrl }) => {
     console.log(`   Reset URL: ${resetUrl}`);
 
     const mailOptions = {
-      from: process.env.FROM_EMAIL || '"Learno Support" <noreply@learno.com>',
+      from: process.env.FROM_EMAIL || '"SkyZin Support" <skyzin2025@gmail.com>',
       to: targetEmail,
-      subject: 'Reset Your Learno Password - Learno Platform',
+      subject: 'Reset Your SkyZin Password - SkyZin Platform',
       html: generatePasswordResetEmailHTML({ name, resetUrl, to: targetEmail, originalEmail: to }),
       text: generatePasswordResetEmailText({ name, resetUrl, to: targetEmail, originalEmail: to })
     };
@@ -103,7 +101,7 @@ const generatePasswordResetEmailHTML = ({ name, resetUrl, to, originalEmail }) =
     <head>
       <meta charset="UTF-8">
       <meta name="viewport" content="width=device-width, initial-scale=1.0">
-      <title>Reset Your Password - Learno</title>
+      <title>Reset Your Password - SkyZin</title>
       <style>
         body {
           font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
@@ -209,7 +207,7 @@ const generatePasswordResetEmailHTML = ({ name, resetUrl, to, originalEmail }) =
     <body>
       <div class="container">
         <div class="header">
-          <div class="logo">Learno</div>
+          <div class="logo">SkyZin</div>
           <p style="margin: 0; color: #6b7280;">Your Learning Platform</p>
         </div>
         
@@ -220,7 +218,7 @@ const generatePasswordResetEmailHTML = ({ name, resetUrl, to, originalEmail }) =
           
           ${originalEmail && originalEmail !== to ? `<div style="background-color: #e0f2fe; border: 1px solid #0288d1; border-radius: 6px; padding: 15px; margin: 20px 0;"><p style="margin: 0; color: #01579b; font-size: 14px;"><strong>Development Mode:</strong> This email was originally for ${originalEmail} but sent to ${to} for testing purposes.</p></div>` : ''}
           
-          <p>We received a request to reset your password for your Learno account. If you made this request, click the button below to reset your password:</p>
+          <p>We received a request to reset your password for your SkyZin account. If you made this request, click the button below to reset your password:</p>
           
           <div style="text-align: center; margin: 30px 0;">
             <a href="${resetUrl}" class="reset-button">Reset My Password</a>
@@ -237,12 +235,12 @@ const generatePasswordResetEmailHTML = ({ name, resetUrl, to, originalEmail }) =
           
           <p>If you have any questions or need assistance, feel free to contact our support team.</p>
           
-          <p>Best regards,<br>The Learno Team</p>
+          <p>Best regards,<br>The SkyZin Team</p>
         </div>
         
         <div class="footer">
           <p>This email was sent to ${to}. If you didn't request a password reset, please ignore this email.</p>
-          <p>&copy; 2024 Learno. All rights reserved.</p>
+          <p>&copy; 2024 SkyZin. All rights reserved.</p>
         </div>
       </div>
     </body>
@@ -255,7 +253,7 @@ const generatePasswordResetEmailText = ({ name, resetUrl, to, originalEmail }) =
   return `
 Hello ${name}!
 
-We received a request to reset your password for your Learno account.
+We received a request to reset your password for your SkyZin account.
 
 If you made this request, click the link below to reset your password:
 ${resetUrl}
@@ -267,11 +265,11 @@ If you didn't request a password reset, you can safely ignore this email.
 If you have any questions or need assistance, feel free to contact our support team.
 
 Best regards,
-The Learno Team
+The SkyZin Team
 
 ---
 This email was sent to ${to}. If you didn't request a password reset, please ignore this email.
-© 2024 Learno. All rights reserved.
+© 2024 SkyZin. All rights reserved.
   `.trim();
 };
 
